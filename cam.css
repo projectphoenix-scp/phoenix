@@ -1,0 +1,26 @@
+html {
+    overflow: hidden;
+    user-select: none;
+}
+
+canvas {
+    -webkit-filter: blur(1px) contrast(2);
+    background: -webkit-radial-gradient(black, grey);
+    position:relative;;
+    bottom:30px;
+}
+#cam2 {
+	padding-left:10px;
+//	font-family: "Times New Roman",Georgia,Serif;
+	font-family:IPAMonaPGothic,Mona,'MS PGothic',YOzFontAA97!important;
+	text-shadow: 0 0 10px #71FF54;
+		font-size: 1.2em;
+	color:#B0FFA1;
+}
+#time {
+	font-family: "Times New Roman",Georgia,Serif;
+	text-shadow: 0 0 10px #71FF54;
+		font-size: 1.2em;
+//	font-weight: bold;
+	color:#B0FFA1;
+}

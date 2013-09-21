@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<title></title>
+<script src="sheetengine.js"></script>
+</head>
+<body><br><br>
+<canvas id="mainCanvas" width="900" height="500" style='border:0px solid;'></canvas>
+<script>
+var canvasElement = document.getElementById('mainCanvas');
+sheetengine.scene.init(canvasElement, {w:2000,h:1500});
+      sheetengine.shadows.lightSource = { x: 1, y: 0, z: -1 };
+      sheetengine.shadows.lightSourcep1 = { x: 1, y: 5, z: -1 };
+      sheetengine.shadows.lightSourcep2 = { x: 3, y: 2, z: 0 };
+ for (var x=-1; x<=3; x++) {
+        for (var y=-1; y<=3; y++) {
+          var basesheet = new sheetengine.BaseSheet({x:x*200,y:y*200,z:0}, {alphaD:90,betaD:0,gammaD:0}, {w:200,h:200});
+          basesheet.color = 'grey';
+        }
+      }
+      
+            var sheet1 = new sheetengine.Sheet({x:150,y:-100,z:20}, {alphaD:0,betaD:0,gammaD:0}, {w:500,h:40});
+      sheet1.context.fillStyle = '#FFF';
+      sheet1.context.fillRect(0,0,400,40);
+            var sheet2 = new sheetengine.Sheet({x:300,y:-150,z:20}, {alphaD:0,betaD:0,gammaD:90}, {w:500,h:40});
+      sheet2.context.fillStyle = '#FFF';
+       sheet2.context.globalAlpha = 0.5;
+      sheet2.context.fillRect(0,0,200,40);
+            var sheet3 = new sheetengine.Sheet({x:150,y:100,z:20}, {alphaD:0,betaD:0,gammaD:0}, {w:500,h:40});
+      sheet3.context.fillStyle = '#FFF';
+       sheet3.context.globalAlpha = 0.5;
+      sheet3.context.fillRect(0,0,150,40);
+                  var sheet7 = new sheetengine.Sheet({x:345,y:100,z:20}, {alphaD:0,betaD:0,gammaD:0}, {w:500,h:40});
+      sheet7.context.fillStyle = '#FFF';
+       sheet7.context.globalAlpha = 0.5;
+      sheet7.context.fillRect(0,0,205,40);
+                  var sheet4 = new sheetengine.Sheet({x:-100,y:-150,z:20}, {alphaD:0,betaD:0,gammaD:90}, {w:500,h:40});
+      sheet4.context.fillStyle = '#FFF';
+      sheet4.context.fillRect(0,0,200,40);
+      
+      
+var door = new sheetengine.Sheet({x:0,y:0,z:20}, {alphaD:0,betaD:0,gammaD:0}, {w:40,h:40});
+door.context.fillStyle = '#FFF';
+door.context.fillRect(0,0,40,40);
+door.context.clearRect(8,5,24,15);
+var m=0;
+var n=100;
+      sheet = new sheetengine.Sheet({x:10+n,y:-30+m,z:10}, {alphaD:0,betaD:0,gammaD:0}, {w:20,h:20});
+      sheet.context.fillStyle = '#FF0';
+      sheet.context.fillRect(0,0,20,20);
+      sheet = new sheetengine.Sheet({x:20+n,y:-40+m,z:10}, {alphaD:0,betaD:0,gammaD:90}, {w:20,h:20});
+      sheet.context.fillStyle = '#FF0';
+      sheet.context.fillRect(0,0,20,20);
+      sheet = new sheetengine.Sheet({x:0+n,y:-50+m,z:12}, {alphaD:90,betaD:0,gammaD:0}, {w:20,h:20});
+      sheet.context.fillStyle = '#FF0';
+      sheet.context.fillRect(0,0,20,20);
+      var m=50;
+var n=200;
+      sheet = new sheetengine.Sheet({x:10+n,y:-30+m,z:10}, {alphaD:0,betaD:0,gammaD:0}, {w:20,h:20});
+      sheet.context.fillStyle = '#FFF';
+      sheet.context.fillRect(0,0,20,20);
+      sheet = new sheetengine.Sheet({x:20+n,y:-40+m,z:10}, {alphaD:0,betaD:0,gammaD:90}, {w:20,h:20});
+      sheet.context.fillStyle = '#FFF';
+      sheet.context.fillRect(0,0,20,20);
+      sheet = new sheetengine.Sheet({x:0+n,y:-50+m,z:12}, {alphaD:90,betaD:0,gammaD:0}, {w:20,h:20});
+      sheet.context.fillStyle = '#FFF';
+      sheet.context.fillRect(0,0,20,20);
+
+var obj = new sheetengine.SheetObject(
+  {x:70,y:101,z:0}, 
+  {alphaD:0,betaD:0,gammaD:0}, 
+  [door], 
+  {w:80,h:80,relu:40,relv:50});
+  sheetengine.calc.calculateChangedSheets();
+  sheetengine.drawing.drawScene(true);
+  
+  // move object around
+      var maxsteps = 10;
+      var steps = 0;
+      var direction = {x:5, y:0, z:0};
+      setInterval(function() {
+          obj.move(direction);
+          if (++steps >= maxsteps) {
+            if (direction.x == 5) { direction.x = -5; direction.y = 0; }
+            else if (direction.x == -5) { direction.x = 5; direction.y = 0; }
+            steps = 0;
+            rotate = false;
+          }
+        sheetengine.calc.calculateChangedSheets();
+        sheetengine.drawing.drawScene(true);
+      }, 150);
+      
+var sheet5 = new sheetengine.Sheet({x:390,y:20,z:0}, {alphaD:90,betaD:0,gammaD:0}, {w:500,h:100});
+var sheet6 = new sheetengine.Sheet({x:190,y:20,z:0}, {alphaD:90,betaD:0,gammaD:0}, {w:500,h:100});
+var img = new Image();
+img.onload = function() {
+  sheet5.context.drawImage(img, 0,0);
+    sheet6.context.drawImage(img, 0,0);
+  
+  // draw the scene
+  sheetengine.calc.calculateChangedSheets();
+  sheetengine.drawing.drawScene(true);
+};
+img.src = '../pics/img.png';
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@import url();
+
+.arrow_box {
+	position: relative;
+	background: #a33737;
+	height:80px;
+			border-radius:5px;
+	border: 2px solid #8a1212;
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(163, 55, 55, 0);
+	border-right-color: #a33737;
+	border-width: 20px;
+	top: 50%;
+	margin-top: -20px;
+}
+.arrow_box:before {
+	border-color: rgba(138, 18, 18, 0);
+	border-right-color: #8a1212;
+	border-width: 23px;
+	top: 50%;
+	margin-top: -23px;
+}
+
